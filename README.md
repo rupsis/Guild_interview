@@ -44,4 +44,17 @@ Fortunately, it seems like you can install pg with just the [libpq](https://mich
 ---
 
 ## Server: 
+### Running the server locally:
+```
+> cd server/
+> bundle install
+> bundle exec rackup --host 0.0.0.0 -p 3000
+```
+
+### Running the in docker:
+```
+> docker build --tag ruby-server .
+
+> docker run -p 3000:3000 ruby-server
+```
 
