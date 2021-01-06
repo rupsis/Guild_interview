@@ -3,7 +3,7 @@ FROM ruby:2.3.8
 WORKDIR /server
 COPY . /server
 
-RUN gem install sinatra
+RUN bundle install
 
 EXPOSE 3000
 
