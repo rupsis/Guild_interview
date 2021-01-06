@@ -5,8 +5,8 @@ On first pass, I noted a few key requirements. Namely, that messages can be look
 {
     messages:[
         {
-            sender: int, // userId
-            reciever: int,
+            senderId: int, // userId
+            recieverId: int,
             message: string,
             timestamp: DateTime
         }
@@ -24,7 +24,7 @@ A service to send a message to another user. </br>
 Request:
 ```
 {
-    reciever: userId,
+    recieverId: userId,
     message: string,
     timestamp: dateTime
 
@@ -45,7 +45,7 @@ Request:
 ```
 // Query parameters
 
-?userId: Int,
+?recipientId: Int,
 
 ?limit: Int,
 
@@ -62,8 +62,8 @@ Response:
 {
     messages:[
         {
-            sender: int, // userId
-            reciever: int,
+            senderId: int, // userId
+            recieverId: int,
             message: string,
             timestamp: DateTime
         }

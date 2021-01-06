@@ -1,5 +1,7 @@
 # Guild Engineering Project 
 
+[Video overview]()
+
 
 # Development Process Overview
 A write up of my thought process while developing this solution can be found [here](Process.md).
@@ -44,4 +46,65 @@ Fortunately, it seems like you can install pg with just the [libpq](https://mich
 ---
 
 ## Server: 
+### Running the server locally:
+```
+> cd server/
+> bundle install
+> bundle exec rackup --host 0.0.0.0 -p 3000
+```
 
+### Running the in docker:
+```
+> docker build --tag ruby-server .
+
+> docker run -p 3000:3000 ruby-server
+```
+
+
+## Running the tests
+```
+> cd ./server
+> gem install rspec
+> rspec test.rb
+```
+
+# API Documentation
+## GET `/v1/:userId/message?recipientId=3&limit=100`
+Parameters:
+```
+recipientId: Int,
+limit: Int //required
+offset: Int,
+
+```
+Response
+```
+{
+    "messages": [
+        {
+            "messageId": "2751",
+            "senderId": "3",
+            "receiverId": "2",
+            "message": "Id omnis architecto. Delectus dolor voluptas. Sed ut non.",
+            "timestamp": "2021-01-04 17:28:06"
+        },
+...
+    ],
+    "limit": 100,
+    "offset": 0
+}
+
+```
+
+## POST  `/v1/:userId/message`
+Request:
+```
+{
+      'recieverId': Int,
+      'message': int,
+      'timestamp': DateTime
+}
+```
+
+# Conclusion
+Some final thoughts about the implementation and trade offs can be viewed [here](Conclusion.md).
