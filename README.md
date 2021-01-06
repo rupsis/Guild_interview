@@ -1,6 +1,5 @@
 # Guild Engineering Project 
 
-[Video overview]()
 
 
 # Development Process Overview
@@ -53,12 +52,14 @@ Fortunately, it seems like you can install pg with just the [libpq](https://mich
 > bundle exec rackup --host 0.0.0.0 -p 3000
 ```
 
-### Running the in docker:
+### Running the app in docker:
 ```
 > docker build --tag ruby-server .
 
 > docker run -p 3000:3000 ruby-server
 ```
+
+**Note**: You'll need to configure a docker network for the containers to talk to each other locally, due to time constrains, I wasn't able to finish the docker compose file in time. In order for the application to talk to the container, you'll want to run the server on the host machine, rather than from the container, else you'll get a db connection error. 
 
 
 ## Running the tests

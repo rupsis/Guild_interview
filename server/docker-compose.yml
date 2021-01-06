@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  db:
+      image: postgres
+      container_name: postgres-db
+      environment: 
+      - POSTGRES_PASSWORD=test
+      ports:
+        - "5555:5432"
+  application:
+      build: .
+      # Docker compose still seems to be starting the app with mis-configured db ports...
+      command: bash -c "while !</dev/tcp/db/5432; do sleep 10; done; bundle exec rackup --host 0.0.0.0 -p 3000"
+      volumes:
+        - .:/server
+      ports:
+        - "3000:3000"
+      depends_on:
+        - db
